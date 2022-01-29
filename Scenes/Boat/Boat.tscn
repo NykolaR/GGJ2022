@@ -1,3 +1,56 @@
-[gd_scene format=2]
+[gd_scene load_steps=3 format=2]
 
-[node name="Boat" type="Spatial"]
+[ext_resource path="res://Scenes/Boat/Boat.gd" type="Script" id=1]
+
+[sub_resource type="CubeMesh" id=1]
+size = Vector3( 0.7, 0.5, 1.4 )
+
+[node name="Boat" type="RigidBody"]
+input_ray_pickable = false
+can_sleep = false
+axis_lock_linear_x = true
+axis_lock_linear_z = true
+script = ExtResource( 1 )
+
+[node name="Mesh" type="MeshInstance" parent="."]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CastHolder" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+
+[node name="RayCast" type="RayCast" parent="CastHolder"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0, 0.7 )
+enabled = true
+cast_to = Vector3( 0, -2, 0 )
+debug_shape_thickness = 3.0
+
+[node name="RayCast2" type="RayCast" parent="CastHolder"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0, 0.7 )
+enabled = true
+cast_to = Vector3( 0, -2, 0 )
+debug_shape_thickness = 3.0
+
+[node name="RayCast3" type="RayCast" parent="CastHolder"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0, 0 )
+enabled = true
+cast_to = Vector3( 0, -2, 0 )
+debug_shape_thickness = 3.0
+
+[node name="RayCast4" type="RayCast" parent="CastHolder"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0, 0 )
+enabled = true
+cast_to = Vector3( 0, -2, 0 )
+debug_shape_thickness = 3.0
+
+[node name="RayCast5" type="RayCast" parent="CastHolder"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0, -0.7 )
+enabled = true
+cast_to = Vector3( 0, -2, 0 )
+debug_shape_thickness = 3.0
+
+[node name="RayCast6" type="RayCast" parent="CastHolder"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0, -0.7 )
+enabled = true
+cast_to = Vector3( 0, -2, 0 )
+debug_shape_thickness = 3.0
