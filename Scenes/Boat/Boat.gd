@@ -24,7 +24,10 @@ func _physics_process(delta: float) -> void:
 			# lower = more force
 			col_distance = range_lerp(col_distance, 2.75, 3.25, 1, 0)
 			# switch to interpolate baked once curve is finalized
-			add_force(Vector3.UP * force_curve.interpolate(col_distance) * FORCE_SCALE, rcast.transform.origin)
+			#add_force(Vector3.UP * force_curve.interpolate(col_distance) * FORCE_SCALE, rcast.transform.origin)
+			add_force(transform.basis.y * force_curve.interpolate(col_distance) * FORCE_SCALE, rcast.transform.origin)
+
+
 
 func _body_entered(body: Node) -> void:
 	linear_damp = 2.0
