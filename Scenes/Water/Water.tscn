@@ -1,11 +1,14 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Scenes/Water/Water.gd" type="Script" id=1]
 
+[sub_resource type="Curve" id=19]
+_data = [ Vector2( 0, 0.127273 ), 0.0, 0.0, 0, 0, Vector2( 0.696429, 0.663636 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 3.11444, 0.0, 0, 0 ]
+
 [sub_resource type="PlaneMesh" id=9]
 size = Vector2( 59, 59 )
-subdivide_width = 20
-subdivide_depth = 20
+subdivide_width = 40
+subdivide_depth = 40
 
 [sub_resource type="Shader" id=10]
 code = "shader_type spatial;
@@ -58,7 +61,7 @@ viewport_path = NodePath("Viewport")
 [sub_resource type="ShaderMaterial" id=11]
 resource_local_to_scene = true
 shader = SubResource( 10 )
-shader_param/height = null
+shader_param/height = 0.215
 shader_param/noise = SubResource( 15 )
 shader_param/noise2 = SubResource( 16 )
 shader_param/gradient = SubResource( 13 )
@@ -108,6 +111,7 @@ viewport_path = NodePath("Viewport")
 
 [node name="Water" type="Spatial"]
 script = ExtResource( 1 )
+wave_curve = SubResource( 19 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
 mesh = SubResource( 9 )

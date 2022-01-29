@@ -108,6 +108,7 @@ transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.293856, 0 )
 
 [node name="cannon001" type="MeshInstance" parent="ship"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.419691, 1.1645, -0.218834 )
+visible = false
 material_override = SubResource( 6 )
 mesh = SubResource( 1 )
 material/0 = null
@@ -124,9 +125,8 @@ mesh = SubResource( 3 )
 material/0 = null
 
 [node name="boat" type="MeshInstance" parent="ship"]
-material_override = SubResource( 6 )
 mesh = SubResource( 7 )
-material/0 = null
+material/0 = SubResource( 6 )
 
 [node name="cloth" type="MeshInstance" parent="ship"]
 material_override = SubResource( 6 )
