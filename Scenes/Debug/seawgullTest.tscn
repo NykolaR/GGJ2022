@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/Boat/Boat.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scenes/Water/Water.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/Debug/BirdWatching.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Debug/BirdWatching.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Water/Water.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0.14454, 0.143402, 0.289062, 1, 0.723267, 0.826106, 0.925781, 1 )
@@ -18,7 +18,7 @@ adjustment_color_correction = SubResource( 2 )
 
 [node name="Debug" type="Spatial"]
 
-[node name="Water" parent="." instance=ExtResource( 2 )]
+[node name="Water" parent="." instance=ExtResource( 3 )]
 
 [node name="Boat" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0 )
@@ -27,14 +27,13 @@ angular_damp = 3.0
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 0.707107, -0.353553, 0.612372, 0, 0.866025, 0.5, -0.707107, -0.353553, 0.612372, 13.6061, 12.2679, 13.6061 )
 projection = 1
-current = true
 size = 18.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 3 )
 
-[node name="Bird" parent="." instance=ExtResource( 3 )]
+[node name="Bird" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 4.87713, 0 )
 
-[node name="Bird2" parent="." instance=ExtResource( 3 )]
+[node name="Bird2" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.190047, 0, 0.0623078, 0, 0.2, 0, -0.0623078, 0, 0.190047, 0, 4.87713, 0 )

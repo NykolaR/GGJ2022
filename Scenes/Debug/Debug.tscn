@@ -15,7 +15,7 @@ ambient_light_color = Color( 1, 1, 1, 1 )
 adjustment_enabled = true
 adjustment_color_correction = SubResource( 2 )
 
-[node name="Debug" type="Spatial"]
+[node name="Debug2" type="Spatial"]
 
 [node name="Water" parent="." instance=ExtResource( 2 )]
 
