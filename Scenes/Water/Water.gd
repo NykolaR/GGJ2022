@@ -1,7 +1,7 @@
 extends Spatial
 
 const MAP_SCALE : int = 60
-const VIEWPORT_STEP : float = 256.0 / 60.0
+const VIEWPORT_STEP : float = 512.0 / 60.0
 
 var offset : Vector2 = Vector2() setget set_offset
 var wind_direction : Vector2 = Vector2.UP
