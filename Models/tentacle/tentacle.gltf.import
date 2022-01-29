@@ -21,7 +21,11 @@ materials/location=1
 materials/storage=1
 materials/keep_on_reimport=true
 meshes/octahedral_compression=true
+<<<<<<< HEAD
 meshes/compress=190
+=======
+meshes/compress=4286
+>>>>>>> a00350e3468ce9c5d39160882c672363007f199c
 meshes/ensure_tangents=true
 meshes/storage=0
 meshes/light_baking=0

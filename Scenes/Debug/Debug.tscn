@@ -4,7 +4,7 @@
 [ext_resource path="res://Scenes/Water/Water.tscn" type="PackedScene" id=2]
 
 [sub_resource type="Gradient" id=1]
-colors = PoolColorArray( 0.0744, 0.0901067, 0.31, 1, 0.723267, 0.826106, 0.925781, 1 )
+colors = PoolColorArray( 0.14454, 0.143402, 0.289062, 1, 0.723267, 0.826106, 0.925781, 1 )
 
 [sub_resource type="GradientTexture" id=2]
 gradient = SubResource( 1 )
@@ -21,8 +21,6 @@ adjustment_color_correction = SubResource( 2 )
 
 [node name="Boat" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0 )
-axis_lock_linear_x = true
-axis_lock_linear_z = true
 angular_damp = 3.0
 
 [node name="Camera" type="Camera" parent="."]

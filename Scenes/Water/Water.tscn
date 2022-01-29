@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Scenes/Water/Water.gd" type="Script" id=1]
 
@@ -14,31 +14,41 @@ uniform sampler2D noise;
 uniform sampler2D noise2 : hint_black;
 uniform float wave_height = 1.0;
 uniform sampler2D gradient;
+uniform sampler2D gradient2;
 
 void vertex () {
 	VERTEX.y = texture(noise2, UV).r * wave_height;
 }
 
 void fragment () {
-	ALBEDO = texture(noise2, UV).rgb;
-	//ALBEDO = texture(gradient, vec2(texture(noise, UV + vec2(TIME * 0.005)).r, 0.5)).rgb;
+	//ALBEDO = vec3(0.);
+	ALBEDO = texture(gradient, vec2(texture(noise2, UV).r)).rgb;
+	ALBEDO *= texture(gradient2, vec2(texture(noise, UV + vec2(TIME, TIME) * 0.01).r, 0.5)).rgb;
 }
 "
 
 [sub_resource type="Gradient" id=12]
-offsets = PoolRealArray( 0.383562, 0.394521, 0.419178 )
-colors = PoolColorArray( 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1 )
+offsets = PoolRealArray( 0, 0.538889, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 0.922222, 0.922222, 0.922222, 1, 1, 1, 1, 1 )
 
 [sub_resource type="GradientTexture" id=13]
 gradient = SubResource( 12 )
+width = 512
+
+[sub_resource type="Gradient" id=17]
+offsets = PoolRealArray( 0.411111, 0.492986, 0.544444 )
+colors = PoolColorArray( 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=18]
+gradient = SubResource( 17 )
 width = 128
 
 [sub_resource type="OpenSimplexNoise" id=14]
-seed = 213
-octaves = 4
-period = 48.0
+seed = 255
+period = 10.0
 
 [sub_resource type="NoiseTexture" id=15]
+flags = 3
 seamless = true
 noise = SubResource( 14 )
 
@@ -52,6 +62,7 @@ shader_param/wave_height = 1.0
 shader_param/noise = SubResource( 15 )
 shader_param/noise2 = SubResource( 16 )
 shader_param/gradient = SubResource( 13 )
+shader_param/gradient2 = SubResource( 18 )
 
 [sub_resource type="HeightMapShape" id=1]
 map_width = 60
@@ -84,9 +95,11 @@ shader_param/gradient = SubResource( 8 )
 [sub_resource type="OpenSimplexNoise" id=4]
 seed = 849
 octaves = 1
-period = 42.0
+period = 30.0
 
 [sub_resource type="NoiseTexture" id=5]
+width = 1024
+height = 1024
 seamless = true
 noise = SubResource( 4 )
 
@@ -106,13 +119,13 @@ material/0 = SubResource( 11 )
 shape = SubResource( 1 )
 
 [node name="Viewport" type="Viewport" parent="."]
-size = Vector2( 256, 256 )
+size = Vector2( 512, 512 )
 render_target_update_mode = 3
 
 [node name="Sprite" type="Sprite" parent="Viewport"]
 material = SubResource( 3 )
 texture = SubResource( 5 )
+centered = false
 
 [node name="Sprite" type="Sprite" parent="."]
-visible = false
 texture = SubResource( 6 )

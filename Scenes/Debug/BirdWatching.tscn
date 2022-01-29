@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Models/seagull.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Debug/Simulation.gd" type="Script" id=2]
+
+[node name="Spatial" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( -0.0186391, 0.999826, -4.37114e-08, 8.14738e-10, -4.37038e-08, -1, -0.999826, -0.0186391, 1.83155e-15, -2.88755, 99.7963, 0 )
+far = 1905.3
+
+[node name="seagull2" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -44.1263, 0, 0 )
+
+[node name="Boids" type="Spatial" parent="."]
