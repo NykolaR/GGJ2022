@@ -24,10 +24,13 @@ func _physics_process(delta: float) -> void:
 			# lower = more force
 			col_distance = range_lerp(col_distance, 2.75, 3.25, 1, 0)
 			# switch to interpolate baked once curve is finalized
-			#add_force(Vector3.UP * force_curve.interpolate(col_distance) * FORCE_SCALE, rcast.transform.origin)
-			add_force(transform.basis.y * force_curve.interpolate(col_distance) * FORCE_SCALE, rcast.transform.origin)
-
-
+			var pos : Vector3 = rcast.transform.origin.rotated(Vector3.UP, rotation.y)
+			#add_force(Vector3.UP * force_curve.interpolate(col_distance) * FORCE_SCALE, pos)
+			add_force(transform.basis.y * force_curve.interpolate(col_distance) * FORCE_SCALE, pos)
+	
+	# ship turning
+	var input : float = Input.get_axis("rotate_left", "rotate_right")
+	add_torque(Vector3(0, -input, 0))
 
 func _body_entered(body: Node) -> void:
 	linear_damp = 2.0
