@@ -4,7 +4,7 @@
 [ext_resource path="res://Scenes/Water/Water.tscn" type="PackedScene" id=2]
 
 [sub_resource type="Gradient" id=1]
-colors = PoolColorArray( 0.0722055, 0.00604248, 0.0859375, 1, 0.723267, 0.826106, 0.925781, 1 )
+colors = PoolColorArray( 0.14454, 0.143402, 0.289062, 1, 0.723267, 0.826106, 0.925781, 1 )
 
 [sub_resource type="GradientTexture" id=2]
 gradient = SubResource( 1 )
