@@ -12,12 +12,12 @@ code = "shader_type spatial;
 
 uniform sampler2D noise;
 uniform sampler2D noise2 : hint_black;
-uniform float wave_height = 1.0;
+uniform float height;
 uniform sampler2D gradient;
 uniform sampler2D gradient2;
 
 void vertex () {
-	VERTEX.y = texture(noise2, UV).r * wave_height;
+	VERTEX.y = texture(noise2, UV).r * height;
 }
 
 void fragment () {
@@ -58,7 +58,7 @@ viewport_path = NodePath("Viewport")
 [sub_resource type="ShaderMaterial" id=11]
 resource_local_to_scene = true
 shader = SubResource( 10 )
-shader_param/wave_height = 1.0
+shader_param/height = null
 shader_param/noise = SubResource( 15 )
 shader_param/noise2 = SubResource( 16 )
 shader_param/gradient = SubResource( 13 )
@@ -128,4 +128,5 @@ texture = SubResource( 5 )
 centered = false
 
 [node name="Sprite" type="Sprite" parent="."]
+visible = false
 texture = SubResource( 6 )

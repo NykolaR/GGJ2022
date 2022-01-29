@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/tentacle.gltf-4f6dc35e2ea9563416d18e48265a82bd.scn"
+path="res://.import/anchor.gltf-47806edf4ab4b79937791f090b15b3b1.scn"
 
 [deps]
 
-source_file="res://Models/tentacle/tentacle.gltf"
-dest_files=[ "res://.import/tentacle.gltf-4f6dc35e2ea9563416d18e48265a82bd.scn" ]
+source_file="res://Models/anchor.gltf"
+dest_files=[ "res://.import/anchor.gltf-47806edf4ab4b79937791f090b15b3b1.scn" ]
 
 [params]
 
@@ -16,7 +16,7 @@ nodes/root_name="Scene Root"
 nodes/root_scale=1.0
 nodes/custom_script=""
 nodes/storage=0
-nodes/use_legacy_names=true
+nodes/use_legacy_names=false
 materials/location=1
 materials/storage=1
 materials/keep_on_reimport=true
