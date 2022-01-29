@@ -5,6 +5,7 @@ extends RigidBody
 const FORCE_SCALE : float = 4.0# * 10.0
 
 onready var area : Area = $Area as Area
+onready var boat_sound : AudioStreamPlayer = $AudioStreamPlayer as AudioStreamPlayer
 onready var cast_holder : Spatial = $CastHolder as Spatial
 var casts : Array
 
@@ -30,6 +31,7 @@ func _physics_process(delta: float) -> void:
 	
 	# ship turning
 	var input : float = Input.get_axis("rotate_left", "rotate_right")
+	boat_sound.volume_db = range_lerp(abs(input), 0, 1, -80, -3)
 	add_torque(Vector3(0, -input, 0))
 
 func _body_entered(body: Node) -> void:
