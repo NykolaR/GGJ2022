@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Autoload/AmbientAudio.gd" type="Script" id=1]
+[ext_resource path="res://Sounds/water_ambience_storm.ogg" type="AudioStream" id=2]
+[ext_resource path="res://Sounds/water_ambience.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Sounds/water_ambience_windy.ogg" type="AudioStream" id=4]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.502164, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.636364 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.515152, 0.2 ), 0.617647, 0.617647, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[node name="AmbientAudio" type="Node"]
+script = ExtResource( 1 )
+calm_ramp = SubResource( 1 )
+wind_ramp = SubResource( 2 )
+storm_ramp = SubResource( 3 )
+
+[node name="Calm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+autoplay = true
+bus = "Ambient"
+
+[node name="Wind" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -80.0
+autoplay = true
+bus = "Ambient"
+
+[node name="Storm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -80.0
+autoplay = true
+bus = "Ambient"
