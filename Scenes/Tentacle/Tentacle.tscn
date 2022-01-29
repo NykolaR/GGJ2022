@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Models/tentacle/tentacle.gltf" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Tentacle/Tentacle.gd" type="Script" id=2]
+
+[node name="tentacle" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="SkeletonIK" type="SkeletonIK" parent="Armature/Skeleton" index="1"]
+process_priority = 1
+root_bone = "Bone"
+tip_bone = "Bone.011"
+target_node = NodePath("../../../IK Target")
+
+[node name="IK Target" parent="." index="1"]
+transform = Transform( -0.237482, 0, -0.971392, 0, 1, 0, 0.971392, 0, -0.237482, 1.12342, 4.2418, -5.91557 )
+
+[node name="Camera" type="Camera" parent="." index="2"]
+transform = Transform( -0.0335913, 0, 0.999436, 0, 1, 0, -0.999436, 0, -0.0335913, 16.9966, 4.72264, -5.40371 )
