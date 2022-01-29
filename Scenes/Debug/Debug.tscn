@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Boat/Boat.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Water/Water.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Models/tentacle/tentacle.gltf" type="PackedScene" id=3]
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0.0722055, 0.00604248, 0.0859375, 1, 0.723267, 0.826106, 0.925781, 1 )
@@ -32,6 +31,3 @@ size = 18.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 3 )
-
-[node name="tentacle" parent="." instance=ExtResource( 3 )]
-transform = Transform( 0.524851, 0.0793456, -0.847488, -0.0186462, 0.996479, 0.0817472, 0.85099, -0.0271026, 0.524482, -3.485, -3.498, 0.374 )
