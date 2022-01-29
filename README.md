@@ -19,6 +19,8 @@
 
 
 
+
+
 ## Engine ⚙️
 
 Made with Godot :heart: 
@@ -27,7 +29,10 @@ Made with Godot :heart:
 
 ## Team 👨‍👨‍👦‍👦
 
-* 
+* Andrew
+* Nyk
+* Emma
+* Adam
 
 
 
