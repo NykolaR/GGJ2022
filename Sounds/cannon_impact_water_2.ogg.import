@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/cannon_impact_water_2.ogg-36ef24ca2ed9dd846bf366f9e420f7ec.oggstr"
+
+[deps]
+
+source_file="res://Sounds/cannon_impact_water_2.ogg"
+dest_files=[ "res://.import/cannon_impact_water_2.ogg-36ef24ca2ed9dd846bf366f9e420f7ec.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

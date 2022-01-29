@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/boat_movement.ogg-a06f12403645d41abe54a997605ecbcc.oggstr"
+
+[deps]
+
+source_file="res://Sounds/boat_movement.ogg"
+dest_files=[ "res://.import/boat_movement.ogg-a06f12403645d41abe54a997605ecbcc.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

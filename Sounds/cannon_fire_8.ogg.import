@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/cannon_fire_8.ogg-cdf9329c3e83340f5c7f6bf5e79bf11d.oggstr"
+
+[deps]
+
+source_file="res://Sounds/cannon_fire_8.ogg"
+dest_files=[ "res://.import/cannon_fire_8.ogg-cdf9329c3e83340f5c7f6bf5e79bf11d.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
