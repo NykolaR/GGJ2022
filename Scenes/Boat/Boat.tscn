@@ -123,10 +123,13 @@ mesh = SubResource( 2 )
 material/0 = null
 
 [node name="cannon" type="MeshInstance" parent="ship"]
-visible = false
+transform = Transform( -5.96046e-08, 0.258819, -0.965926, 0, 0.965926, 0.258819, 1, 1.49012e-08, 0, -0.506447, 0.644949, -0.503907 )
 material_override = SubResource( 6 )
 mesh = SubResource( 3 )
 material/0 = null
+
+[node name="CannonballSpawn" type="Position3D" parent="ship/cannon"]
+transform = Transform( 1, 4.47035e-08, -2.98023e-08, 1.49012e-08, 1, 0, 2.98023e-08, 7.45058e-09, 1, -5.96046e-08, 1.78814e-07, 1 )
 
 [node name="boat" type="MeshInstance" parent="ship"]
 mesh = SubResource( 7 )
