@@ -60,4 +60,5 @@ func set_wave_height(new : float) -> void:
 
 func set_intensity(new : float) -> void:
 	intensity = clamp(new, 0, 1)
+	$Spawner.intensity = intensity
 	rain.emitting = intensity > 0.6
