@@ -1,5 +1,7 @@
 extends Spatial
 
+const RING : PackedScene = preload("res://Scenes/Water/Ring.tscn")
+
 const MAP_SCALE : int = 60
 const VIEWPORT_STEP : float = 512.0 / 60.0
 
@@ -49,6 +51,11 @@ func update_heightmap() -> void:
 	
 	data.unlock()
 	heightmap.map_data = n_float_array
+
+func add_ring(mposition : Vector3) -> void:
+	var nring : Sprite = RING.instance()
+	nring.position = Vector2(range_lerp(mposition.x, -29.5, 29.5, 0, 512), range_lerp(-mposition.z, -29.5, 29.5, 0, 512))
+	heightmap_viewport.add_child(nring)
 
 func set_offset(new : Vector2) -> void:
 	offset = new

@@ -15,7 +15,7 @@ func _ready():
 	pass # Replace with function body.
 
 func _process(delta):
-	print(intensity)
+	#print(intensity)
 	if (intensity < STORM_1):
 		# Just Waves
 		pass

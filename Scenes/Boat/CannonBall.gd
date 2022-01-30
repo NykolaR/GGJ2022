@@ -14,6 +14,7 @@ func _screen_exited() -> void:
 func _body_entered(body: Node) -> void:
 	splash_sounds.get_child(randi()%3).play()
 	linear_velocity *= 0.5
+	get_tree().call_group("Water", "add_ring", transform.origin)
 
 func _on_Area_area_entered(area: Area) -> void:
 	if area.get_parent().has_method("hit"):

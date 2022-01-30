@@ -40,7 +40,6 @@ func _input(event: InputEvent) -> void:
 func start_game() -> void:
 	var nboat : Spatial = BOAT.instance()
 	boat_spawn.add_child(nboat)
-	set_intensity(0)
 	current_wave = 0
 	weather_state = CALM
 	tween.interpolate_property(main_menu, "modulate:a", null, 0.0, 1.5, Tween.TRANS_CUBIC, Tween.EASE_OUT)
