@@ -41,7 +41,7 @@ func _process(delta):
 	elif (intensity >= STORM_INTENSITY_4 and intensity < STORM_INTENSITY_5):
 		# Occasion,al weaves, and heavy kraken
 		state = STORM_4
-	elif (intensity == STORM_INTENSITY_4):
+	elif (intensity >= STORM_INTENSITY_5-0.1):
 		# Send waves from all directions, and occasional kraken
 		state = STORM_5
 
