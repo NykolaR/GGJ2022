@@ -60,6 +60,7 @@ tracks/2/keys = {
 }
 
 [node name="Ring" type="Sprite"]
+modulate = Color( 1, 1, 1, 0 )
 scale = Vector2( 0.05, 0.05 )
 texture = ExtResource( 1 )
 
