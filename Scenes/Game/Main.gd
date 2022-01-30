@@ -14,6 +14,7 @@ var intensity : float = 0.0 setget set_intensity
 var current_wave : int = 0
 
 func _ready() -> void:
+	yield(get_tree().create_timer(30), "timeout")
 	tween.interpolate_property(self, "intensity", null, 0.9, 10.0, Tween.TRANS_CUBIC, Tween.EASE_IN)
 	tween.start()
 	animation.play("Intensity")
