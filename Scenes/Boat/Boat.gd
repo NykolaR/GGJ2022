@@ -42,6 +42,7 @@ func _physics_process(delta: float) -> void:
 	
 	var flippy : float = global_transform.basis.y.dot(Vector3.UP)
 	if flippy < -0.2 or global_transform.origin.y < -4:
+		$Death.play()
 		set_physics_process(false)
 		boat_sound.volume_db = -80
 		yield(get_tree().create_timer(1.0), "timeout")

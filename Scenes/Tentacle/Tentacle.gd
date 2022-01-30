@@ -41,7 +41,6 @@ func _ready():
 	state = RISING
 
 func _process(delta):
-	#print (state)
 	if state == RISING:
 		pass
 	elif state == STEERING:

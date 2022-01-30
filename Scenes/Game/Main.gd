@@ -38,7 +38,7 @@ func _input(event: InputEvent) -> void:
 				if game_over.modulate.a >= 0.9 and not tween.is_active():
 					set_state(MAIN)
 	
-	if Input.is_action_just_pressed("cheat_code_reset"):
+	if Input.is_action_just_pressed("cheat_code_reset") and main_menu.modulate.a >= 0.9 and not tween.is_active():
 		if state == MAIN:
 			use_continue()
 
@@ -51,7 +51,6 @@ func use_continue() -> void:
 	tween.start()
 	state_flip.wait_time = 8 # (?)
 	state_flip.start()
-
 
 func start_game() -> void:
 	var nboat : Spatial = BOAT.instance()
@@ -105,6 +104,7 @@ func set_weather(new : int) -> void:
 	weather_state = new
 	match weather_state:
 		CALM:
+			get_tree().call_group("Kraken", "hit")
 			var nintensity : float = rand_range(0.0, 0.1)
 			tween.interpolate_property(self, "intensity", null, nintensity, 3.0, Tween.TRANS_QUAD, Tween.EASE_IN)
 			tween.start()

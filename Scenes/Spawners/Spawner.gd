@@ -67,7 +67,6 @@ func spawn_kraken():
 	new_kraken.scale = Vector3(rand_range(0.4,0.6), rand_range(0.4,0.5), rand_range(0.4,0.5))
 
 func _on_wave_timer_timeout():
-	print (intensity)
 	if state == CALM:
 		wave_timer.wait_time = 1
 	elif state == STORM_1:

@@ -17,6 +17,10 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("fullscreen"):
 		OS.window_fullscreen = not OS.window_fullscreen
 
+func _process(delta: float) -> void:
+	# set kraken volume
+	pass
+
 func set_intensity(new : float) -> void:
 	intensity = clamp(new, 0, 1)
 	

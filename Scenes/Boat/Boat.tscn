@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scenes/Boat/Boat.gd" type="Script" id=1]
 [ext_resource path="res://Sounds/boat_movement.ogg" type="AudioStream" id=2]
 [ext_resource path="res://Models/ship material.material" type="Material" id=3]
+[ext_resource path="res://Sounds/game_over.ogg" type="AudioStream" id=4]
 [ext_resource path="res://Models/shipalbedo.png" type="Texture" id=7]
 
 [sub_resource type="Curve" id=4]
@@ -202,6 +203,10 @@ bus = "SFX"
 [node name="Cooldown" type="Timer" parent="."]
 one_shot = true
 autostart = true
+
+[node name="Death" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -6.0
 
 [connection signal="body_entered" from="Area" to="." method="_body_entered"]
 [connection signal="body_exited" from="Area" to="." method="_body_exited"]
