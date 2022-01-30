@@ -1,19 +1,100 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Models/tentacle/tentacle.gltf" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Tentacle/Tentacle.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("IK Target:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -0.428928, 13.1588, -2.21252 ) ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "dance-tentacle-dance"
+length = 2.0
+loop = true
+tracks/0/type = "transform"
+tracks/0/path = NodePath("IK Target")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, 0, 16.0901, 0, 0, -0.786601, 0, 0.617462, 1, 1, 1, 0.5, 1, 0, 2.40877, 5.21193, 0, -0.786601, 0, 0.617462, 1, 1, 1, 1, 1, 0, 16.0901, 0, 0, -0.786601, 0, 0.617462, 1, 1, 1, 1.5, 1, 0, 4.79756, -5.28431, 0, -0.786601, 0, 0.617462, 1, 1, 1, 2, 1, 0, 16.0901, 0, 0, -0.786601, 0, 0.617462, 1, 1, 1 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "dummy"
+
+[sub_resource type="Animation" id=2]
+resource_name = "rise"
+tracks/0/type = "transform"
+tracks/0/path = NodePath("IK Target")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, 0, -6.09729, -3.16075, 0.397849, -0.647216, -0.163729, 0.629301, 1, 1, 1, 1, 1, 0, 14.9625, 0, 0.397849, -0.647216, -0.163729, 0.629301, 1, 1, 1 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "wiggling"
+length = 2.0
+loop = true
+tracks/0/type = "transform"
+tracks/0/path = NodePath("IK Target")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = PoolRealArray( 0, 1, -0.0823822, 12.4061, -1.75209, 0.397849, -0.647216, -0.163729, 0.629301, 1, 1, 1, 0.3, 1, -1.78485, 11.5351, -0.646997, 0.397849, -0.647216, -0.163729, 0.629302, 1, 1, 1, 0.5, 1, -2.91983, 12.4061, -0.164894, 0.397849, -0.647216, -0.163729, 0.629302, 1, 1, 1, 0.8, 1, -1.26059, 13.2445, 2.27744, 0.397849, -0.647216, -0.163729, 0.629302, 1, 1, 1, 1, 1, -0.154437, 12.4061, 4.05232, 0.397849, -0.647216, -0.163729, 0.629302, 1, 1, 1, 1.3, 1, 2.08553, 11.7151, 1.39508, 0.397849, -0.647216, -0.163729, 0.629302, 1, 1, 1, 1.5, 1, 3.57884, 12.4061, -0.164894, 0.397849, -0.647216, -0.163729, 0.629302, 1, 1, 1, 1.8, 1, 1.38234, 13.5259, -1.23075, 0.397849, -0.647216, -0.163729, 0.629302, 1, 1, 1, 2, 1, -0.082, 12.406, -1.752, 0.397849, -0.647216, -0.163729, 0.629302, 1, 1, 1 )
+
+[sub_resource type="CapsuleShape" id=3]
+height = 9.1533
 
 [node name="tentacle" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="SkeletonIK" type="SkeletonIK" parent="Armature/Skeleton" index="1"]
 process_priority = 1
-root_bone = "Bone"
-tip_bone = "Bone.011"
+root_bone = "bone"
+tip_bone = "bone_11"
 target_node = NodePath("../../../IK Target")
 
 [node name="IK Target" parent="." index="1"]
-transform = Transform( -0.237482, 0, -0.971392, 0, 1, 0, 0.971392, 0, -0.237482, 1.12342, 4.2418, -5.91557 )
+transform = Transform( 0.108609, -0.308918, -0.944867, -0.721058, 0.629818, -0.288798, 0.684309, 0.71267, -0.154344, -0.428928, 13.1588, -2.21252 )
 
-[node name="Camera" type="Camera" parent="." index="2"]
-transform = Transform( -0.0335913, 0, 0.999436, 0, 1, 0, -0.999436, 0, -0.0335913, 16.9966, 4.72264, -5.40371 )
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+anims/RESET = SubResource( 4 )
+anims/dance-tentacle-dance = SubResource( 1 )
+anims/dummy = SubResource( 5 )
+anims/rise = SubResource( 2 )
+anims/wiggling = SubResource( 6 )
+
+[node name="Node" type="Node" parent="." index="3"]
+
+[node name="Camera" type="Camera" parent="Node" index="0"]
+transform = Transform( -0.0237062, -0.708488, 0.705325, -0.023799, 0.705723, 0.708088, -0.999436, 0, -0.0335913, 16.9966, 20.0699, -5.40371 )
+
+[node name="Tween" type="Tween" parent="." index="4"]
+
+[node name="Timer" type="Timer" parent="." index="5"]
+wait_time = 0.35
+one_shot = true
+
+[node name="Area" type="Area" parent="." index="6"]
+collision_layer = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="Area" index="0"]
+transform = Transform( 2.02561, 0, 0, 0, -5.34468e-08, 1.22272, 0, -2.00215, -8.75166e-08, 0, 6.30978, 0.114766 )
+shape = SubResource( 3 )
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
