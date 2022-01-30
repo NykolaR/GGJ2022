@@ -1,14 +1,15 @@
 extends Spatial
 
 var intensity : float = 0.0
-var STORM_INTENSITY_1 = 0.4
-var STORM_INTENSITY_2 = 0.6
-var STORM_INTENSITY_3 = 0.8
-var STORM_INTENSITY_4 = 1.0
+var STORM_INTENSITY_1 = 0.2
+var STORM_INTENSITY_2 = 0.4
+var STORM_INTENSITY_3 = 0.6
+var STORM_INTENSITY_4 = 0.8
+var STORM_INTENSITY_5 = 1.0
 var wind_direction = Vector2(0,0)
 var state
 
-enum {CALM, STORM_1, STORM_2, STORM_3, STORM_4}
+enum {CALM, STORM_1, STORM_2, STORM_3, STORM_4, STORM_5}
 const WAVE : PackedScene = preload("res://Scenes/Wave/WaveWave.tscn")
 const KRAKEN : PackedScene = preload("res://Scenes/Tentacle/Tentacle.tscn")
 
@@ -37,9 +38,12 @@ func _process(delta):
 	elif (intensity >= STORM_INTENSITY_3 and intensity < STORM_INTENSITY_4):
 		# Occasion,al weaves, and heavy kraken
 		state = STORM_3
+	elif (intensity >= STORM_INTENSITY_4 and intensity < STORM_INTENSITY_5):
+		# Occasion,al weaves, and heavy kraken
+		state = STORM_4
 	elif (intensity == STORM_INTENSITY_4):
 		# Send waves from all directions, and occasional kraken
-		state = STORM_4
+		state = STORM_5
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -55,7 +59,7 @@ func spawn_wave():
 	new_wave.set_as_toplevel(true)
 	new_wave.rotation = Vector3(0, -wind_direction.angle(),0)
 	new_wave.scale.x = rand_range(1.0, 5.0)
-	new_wave.scale.y = rand_range(3.0, 6.0)
+	new_wave.scale.z = rand_range(3.0, 6.0)
 	# we still need to queue free it
 	
 func spawn_kraken():
@@ -68,15 +72,17 @@ func _on_wave_timer_timeout():
 	if state == CALM:
 		wave_timer.wait_time = 1
 	elif state == STORM_1:
-		wave_timer.wait_time = 10
-		spawn_wave()
+		wave_timer.wait_time = range_around(10)
+		spawn_wave()	
 	elif state == STORM_2:
 		wave_timer.wait_time = 1
 	elif state == STORM_3:
-		wave_timer.wait_time = 5
+		wave_timer.wait_time = range_around(5)
 		spawn_wave()
 	elif state == STORM_4:
-		wave_timer.wait_time = 3
+		wave_timer.wait_time = 1
+	elif state == STORM_5:
+		wave_timer.wait_time = range_around(3)
 		spawn_wave()
 	wave_timer.start()
 
@@ -86,12 +92,17 @@ func _on_kraken_timer_timeout():
 	elif state == STORM_1:
 		kraken_timer.wait_time = 1
 	elif state == STORM_2:
-		kraken_timer.wait_time = 10
+		kraken_timer.wait_time = range_around(10)
 		spawn_kraken()
 	elif state == STORM_3:
-		kraken_timer.wait_time = 5
-		spawn_kraken()
+		kraken_timer.wait_time = 1
 	elif state == STORM_4:
-		kraken_timer.wait_time = 3
+		kraken_timer.wait_time = range_around(5)
+		spawn_kraken()
+	elif state == STORM_5:
+		kraken_timer.wait_time = range_around(2)
 		spawn_kraken()
 	kraken_timer.start()
+	
+func range_around (input):
+	return rand_range(input+1, input-1)
