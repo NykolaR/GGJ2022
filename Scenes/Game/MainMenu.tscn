@@ -30,7 +30,8 @@ __meta__ = {
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -169.0
+margin_top = -88.0
+margin_bottom = -13.0
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -38,7 +39,7 @@ __meta__ = {
 
 [node name="FaceButton" type="TextureRect" parent="HBoxContainer"]
 margin_right = 1024.0
-margin_bottom = 51.0
+margin_bottom = 31.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 1 )
@@ -48,15 +49,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HSeparator" type="HSeparator" parent="HBoxContainer"]
-margin_top = 55.0
+[node name="Control2" type="Control" parent="HBoxContainer"]
+margin_top = 35.0
 margin_right = 1024.0
-margin_bottom = 59.0
+margin_bottom = 35.0
 
 [node name="SpaceBar" type="TextureRect" parent="HBoxContainer"]
-margin_top = 63.0
+margin_top = 39.0
 margin_right = 1024.0
-margin_bottom = 114.0
+margin_bottom = 71.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 2 )
@@ -67,11 +68,9 @@ __meta__ = {
 }
 
 [node name="Control" type="Control" parent="HBoxContainer"]
-margin_top = 118.0
+margin_top = 75.0
 margin_right = 1024.0
-margin_bottom = 169.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
+margin_bottom = 75.0
 
 [node name="Label" type="Label" parent="."]
 anchor_left = 0.5
