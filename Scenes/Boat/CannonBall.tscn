@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Scenes/Boat/CannonBall.gd" type="Script" id=1]
 [ext_resource path="res://Sounds/cannon_fire_1.ogg" type="AudioStream" id=2]
@@ -23,6 +23,9 @@ rings = 12
 
 [sub_resource type="SphereShape" id=2]
 radius = 0.151166
+
+[sub_resource type="SphereShape" id=3]
+radius = 0.2
 
 [node name="CannonBall" type="RigidBody"]
 collision_layer = 0
@@ -108,4 +111,11 @@ unit_size = 20.0
 
 [node name="VisibilityNotifier" type="VisibilityNotifier" parent="."]
 
+[node name="Area" type="Area" parent="."]
+monitorable = false
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+shape = SubResource( 3 )
+
 [connection signal="screen_exited" from="VisibilityNotifier" to="." method="_screen_exited"]
+[connection signal="body_entered" from="Area" to="." method="_body_entered"]

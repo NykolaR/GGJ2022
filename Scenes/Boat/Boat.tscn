@@ -200,7 +200,6 @@ autoplay = true
 bus = "SFX"
 
 [node name="Cooldown" type="Timer" parent="."]
-wait_time = 0.5
 one_shot = true
 
 [connection signal="body_entered" from="Area" to="." method="_body_entered"]

@@ -50,10 +50,10 @@ func spawn_ball() -> void:
 	new_ball.global_transform = cannon_spawn.global_transform
 	new_ball.shoot()
 	
-	add_torque(transform.basis.z * -10)
+	add_torque(transform.basis.z * -20)
 
 func hit(position : Vector3) -> void:
-	pass
+	add_torque(position.normalized() * 30)
 
 func _body_entered(body: Node) -> void:
 	linear_damp = 2.0
