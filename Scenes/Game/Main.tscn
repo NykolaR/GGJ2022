@@ -75,7 +75,6 @@ shader = SubResource( 7 )
 script = ExtResource( 1 )
 
 [node name="MainMenu" parent="." instance=ExtResource( 3 )]
-visible = false
 
 [node name="GameOver" parent="." instance=ExtResource( 4 )]
 visible = false

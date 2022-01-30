@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="256"
+   height="256"
+   viewBox="0 0 67.733331 67.733331"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20, custom)"
+   sodipodi:docname="bottomface.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="px"
+     showgrid="false"
+     units="px"
+     width="256px"
+     inkscape:zoom="0.77058782"
+     inkscape:cx="38.931319"
+     inkscape:cy="95.38173"
+     inkscape:window-width="1920"
+     inkscape:window-height="1050"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <circle
+       style="fill:#ffffff;fill-opacity:0.397604;fill-rule:evenodd;stroke-width:0.306611"
+       id="path31"
+       cx="33.866665"
+       cy="13.229166"
+       r="13.229166" />
+    <circle
+       style="fill:#ffffff;fill-opacity:0.85228449;fill-rule:evenodd;stroke-width:0.306611"
+       id="circle1792"
+       cx="33.866665"
+       cy="54.504166"
+       r="13.229166" />
+    <circle
+       style="fill:#ffffff;fill-opacity:0.397604;fill-rule:evenodd;stroke-width:0.306611"
+       id="circle1794"
+       cx="13.229166"
+       cy="33.866665"
+       r="13.229166" />
+    <circle
+       style="fill:#ffffff;fill-opacity:0.397604;fill-rule:evenodd;stroke-width:0.306611"
+       id="circle1796"
+       cx="54.504166"
+       cy="33.866665"
+       r="13.229166" />
+  </g>
+</svg>
