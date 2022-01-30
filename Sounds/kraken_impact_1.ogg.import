@@ -11,5 +11,5 @@ dest_files=[ "res://.import/kraken_impact_1.ogg-b3a722becd84b6508a581cfc81968ab6
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

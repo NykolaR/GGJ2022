@@ -1,6 +1,19 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scenes/Boat/CannonBall.gd" type="Script" id=1]
+[ext_resource path="res://Sounds/cannon_fire_1.ogg" type="AudioStream" id=2]
+[ext_resource path="res://Sounds/cannon_fire_3.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Sounds/cannon_fire_2.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Sounds/cannon_fire_8.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Sounds/cannon_fire_7.ogg" type="AudioStream" id=6]
+[ext_resource path="res://Sounds/cannon_fire_5.ogg" type="AudioStream" id=7]
+[ext_resource path="res://Sounds/cannon_fire_6.ogg" type="AudioStream" id=8]
+[ext_resource path="res://Sounds/cannon_fire_4.ogg" type="AudioStream" id=9]
+[ext_resource path="res://Sounds/cannon_impact_water_1.ogg" type="AudioStream" id=10]
+[ext_resource path="res://Sounds/cannon_impact_water_3.ogg" type="AudioStream" id=11]
+[ext_resource path="res://Sounds/cannon_impact_water_2.ogg" type="AudioStream" id=12]
+[ext_resource path="res://Sounds/kraken_impact_1.ogg" type="AudioStream" id=13]
+[ext_resource path="res://Sounds/kraken_impact_2.ogg" type="AudioStream" id=14]
 
 [sub_resource type="SphereMesh" id=1]
 radius = 0.15
@@ -24,3 +37,73 @@ material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 2 )
+
+[node name="Shot" type="Spatial" parent="."]
+
+[node name="S1" type="AudioStreamPlayer3D" parent="Shot"]
+stream = ExtResource( 2 )
+unit_size = 20.0
+bus = "SFX"
+
+[node name="S2" type="AudioStreamPlayer3D" parent="Shot"]
+stream = ExtResource( 4 )
+unit_size = 20.0
+bus = "SFX"
+
+[node name="S3" type="AudioStreamPlayer3D" parent="Shot"]
+stream = ExtResource( 3 )
+unit_size = 20.0
+bus = "SFX"
+
+[node name="S4" type="AudioStreamPlayer3D" parent="Shot"]
+stream = ExtResource( 9 )
+unit_size = 20.0
+bus = "SFX"
+
+[node name="S5" type="AudioStreamPlayer3D" parent="Shot"]
+stream = ExtResource( 7 )
+unit_size = 20.0
+bus = "SFX"
+
+[node name="S6" type="AudioStreamPlayer3D" parent="Shot"]
+stream = ExtResource( 8 )
+unit_size = 20.0
+bus = "SFX"
+
+[node name="S7" type="AudioStreamPlayer3D" parent="Shot"]
+stream = ExtResource( 6 )
+unit_size = 20.0
+bus = "SFX"
+
+[node name="S8" type="AudioStreamPlayer3D" parent="Shot"]
+stream = ExtResource( 5 )
+unit_size = 20.0
+bus = "SFX"
+
+[node name="WaterHit" type="Spatial" parent="."]
+
+[node name="S1" type="AudioStreamPlayer3D" parent="WaterHit"]
+stream = ExtResource( 10 )
+unit_size = 20.0
+
+[node name="S2" type="AudioStreamPlayer3D" parent="WaterHit"]
+stream = ExtResource( 12 )
+unit_size = 20.0
+
+[node name="S3" type="AudioStreamPlayer3D" parent="WaterHit"]
+stream = ExtResource( 11 )
+unit_size = 20.0
+
+[node name="KrakenHit" type="Spatial" parent="."]
+
+[node name="S1" type="AudioStreamPlayer3D" parent="KrakenHit"]
+stream = ExtResource( 13 )
+unit_size = 20.0
+
+[node name="S2" type="AudioStreamPlayer3D" parent="KrakenHit"]
+stream = ExtResource( 14 )
+unit_size = 20.0
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="."]
+
+[connection signal="screen_exited" from="VisibilityNotifier" to="." method="_screen_exited"]

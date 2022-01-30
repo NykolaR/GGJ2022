@@ -11,5 +11,5 @@ dest_files=[ "res://.import/kraken_roar_3.ogg-2683a8807c17f96af41be55d29f2ef70.o
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

@@ -11,5 +11,5 @@ dest_files=[ "res://.import/cannon_impact_water_2.ogg-36ef24ca2ed9dd846bf366f9e4
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

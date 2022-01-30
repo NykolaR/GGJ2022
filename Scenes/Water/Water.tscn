@@ -151,6 +151,7 @@ texture = SubResource( 6 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32, 0 )
 material_override = SubResource( 20 )
 cast_shadow = 0
+emitting = false
 amount = 512
 lifetime = 0.25
 speed_scale = 0.45

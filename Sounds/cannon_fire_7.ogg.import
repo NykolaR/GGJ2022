@@ -11,5 +11,5 @@ dest_files=[ "res://.import/cannon_fire_7.ogg-2218a1c01677c504abd23e52bf73502e.o
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
