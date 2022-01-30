@@ -45,12 +45,35 @@ func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("cheat_code_reset") and main_menu.modulate.a >= 0.9 and not tween.is_active():
 		if state == MAIN:
 			use_continue()
+	elif Input.is_action_just_pressed("cheat_code_2") and main_menu.modulate.a >= 0.9 and not tween.is_active():
+		if state == MAIN:
+			start_at_level(2)
+	elif Input.is_action_just_pressed("cheat_code_3") and main_menu.modulate.a >= 0.9 and not tween.is_active():
+		if state == MAIN:
+			start_at_level(3)
+	elif Input.is_action_just_pressed("cheat_code_4") and main_menu.modulate.a >= 0.9 and not tween.is_active():
+		if state == MAIN:
+			start_at_level(4)
+	elif Input.is_action_just_pressed("cheat_code_5") and main_menu.modulate.a >= 0.9 and not tween.is_active():
+		if state == MAIN:
+			start_at_level(5)
 
 func _process(delta: float) -> void:
 	if state == GAME:
 		survival_time += delta
 	
 	birds.transform.origin.x = range_lerp(intensity, 0, 1, 0, -30)
+
+func start_at_level(input) -> void:
+	var nboat : Spatial = BOAT.instance()
+	boat_spawn.add_child(nboat)
+	current_wave = input
+	weather_state = CALM
+	tween.interpolate_property(main_menu, "modulate:a", null, 0.0, 1.5, Tween.TRANS_CUBIC, Tween.EASE_OUT)
+	tween.start()
+	state_flip.wait_time = 8 # (?)
+	state_flip.start()
+	survival_time = 0
 
 func use_continue() -> void:
 	var nboat : Spatial = BOAT.instance()
