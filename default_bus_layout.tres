@@ -11,6 +11,7 @@ spread = 0.15
 wet = 0.1
 
 [resource]
+bus/0/volume_db = -11.9576
 bus/1/name = "Ambient"
 bus/1/solo = false
 bus/1/mute = false

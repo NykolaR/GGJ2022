@@ -31,8 +31,11 @@ func _physics_process(delta: float) -> void:
 	
 	# ship turning
 	var input : float = Input.get_axis("rotate_left", "rotate_right")
-	boat_sound.volume_db = range_lerp(abs(input), 0, 1, -80, -3)
+	boat_sound.volume_db = linear2db(abs(input))
 	add_torque(Vector3(0, -input, 0))
+
+func hit(position : Vector3) -> void:
+	pass
 
 func _body_entered(body: Node) -> void:
 	linear_damp = 2.0
