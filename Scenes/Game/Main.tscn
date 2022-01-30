@@ -75,9 +75,10 @@ shader = SubResource( 7 )
 script = ExtResource( 1 )
 
 [node name="MainMenu" parent="." instance=ExtResource( 3 )]
+modulate = Color( 1, 1, 1, 0 )
 
 [node name="GameOver" parent="." instance=ExtResource( 4 )]
-visible = false
+modulate = Color( 1, 1, 1, 0 )
 
 [node name="Water" parent="." instance=ExtResource( 2 )]
 
@@ -102,11 +103,12 @@ anims/RESET = SubResource( 5 )
 
 [node name="StateFlip" type="Timer" parent="."]
 wait_time = 8.0
+one_shot = true
 
-[node name="Spatial" type="Spatial" parent="."]
+[node name="BoatSpawn" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0 )
 
-[node name="Boat" parent="Spatial" instance=ExtResource( 5 )]
+[node name="Boat" parent="BoatSpawn" instance=ExtResource( 5 )]
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1
@@ -120,5 +122,6 @@ visible = false
 mesh = SubResource( 6 )
 material/0 = SubResource( 8 )
 
+[connection signal="timeout" from="StateFlip" to="." method="_StateFlip_timeout"]
 [connection signal="timeout" from="Timer" to="MeshInstance" method="hide"]
 [connection signal="timeout" from="LightningTimer" to="." method="_LightningTimer_timeout"]

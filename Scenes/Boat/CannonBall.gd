@@ -14,3 +14,8 @@ func _screen_exited() -> void:
 func _body_entered(body: Node) -> void:
 	splash_sounds.get_child(randi()%3).play()
 	linear_velocity *= 0.5
+
+func _on_Area_area_entered(area: Area) -> void:
+	if area.get_parent().has_method("hit"):
+		area.get_parent().hit()
+		linear_velocity *= 0.1
