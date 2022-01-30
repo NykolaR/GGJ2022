@@ -77,18 +77,13 @@ anims/dummy = SubResource( 5 )
 anims/rise = SubResource( 2 )
 anims/wiggling = SubResource( 6 )
 
-[node name="Node" type="Node" parent="." index="3"]
+[node name="Tween" type="Tween" parent="." index="3"]
 
-[node name="Camera" type="Camera" parent="Node" index="0"]
-transform = Transform( -0.0237062, -0.708488, 0.705325, -0.023799, 0.705723, 0.708088, -0.999436, 0, -0.0335913, 16.9966, 20.0699, -5.40371 )
-
-[node name="Tween" type="Tween" parent="." index="4"]
-
-[node name="Timer" type="Timer" parent="." index="5"]
+[node name="Timer" type="Timer" parent="." index="4"]
 wait_time = 0.35
 one_shot = true
 
-[node name="Area" type="Area" parent="." index="6"]
+[node name="Area" type="Area" parent="." index="5"]
 collision_layer = 2
 
 [node name="CollisionShape" type="CollisionShape" parent="Area" index="0"]
