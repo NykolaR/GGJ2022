@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/water_ambience_windy_1.ogg-94a0f1bec5b843c0d15f9a63c3f5bf2a.oggstr"
+
+[deps]
+
+source_file="res://Sounds/water_ambience_windy_1.ogg"
+dest_files=[ "res://.import/water_ambience_windy_1.ogg-94a0f1bec5b843c0d15f9a63c3f5bf2a.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
