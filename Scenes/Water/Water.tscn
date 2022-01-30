@@ -26,7 +26,7 @@ void vertex () {
 void fragment () {
 	//ALBEDO = vec3(0.);
 	ALBEDO = texture(gradient, vec2(texture(noise2, UV).r)).rgb;
-	ALBEDO *= texture(gradient2, vec2(texture(noise, UV + vec2(TIME, TIME) * 0.01).r, 0.5)).rgb;
+	ALBEDO *= (texture(gradient2, vec2(texture(noise, UV + vec2(TIME, TIME) * 0.01).r, 0.5)).rgb + 0.3);
 }
 "
 
@@ -151,10 +151,9 @@ texture = SubResource( 6 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32, 0 )
 material_override = SubResource( 20 )
 cast_shadow = 0
-emitting = false
 amount = 512
-lifetime = 0.22
-speed_scale = 0.1
+lifetime = 0.25
+speed_scale = 0.45
 mesh = SubResource( 21 )
 emission_shape = 2
 emission_box_extents = Vector3( 32, 4, 32 )

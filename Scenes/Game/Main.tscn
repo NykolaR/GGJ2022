@@ -65,7 +65,7 @@ code = "shader_type spatial;
 //}
 
 void fragment() {
-	ALBEDO = vec3(0.4) - texture(SCREEN_TEXTURE, SCREEN_UV).rgb;//vec3(1.0);
+	ALBEDO = vec3(0.2) - texture(SCREEN_TEXTURE, SCREEN_UV).rgb;//vec3(1.0);
 }"
 
 [sub_resource type="ShaderMaterial" id=8]

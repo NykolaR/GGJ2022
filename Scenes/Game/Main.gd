@@ -39,7 +39,7 @@ func set_intensity(new : float) -> void:
 		$LightningTimer.stop()
 
 func _LightningTimer_timeout() -> void:
-	return
+	#return
 	if randi()%10 == 0:
 		$MeshInstance.show()
 		$Timer.start()

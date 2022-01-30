@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Models/Material.material" type="Material" id=1]
 [ext_resource path="res://Models/tentacle/wave-texture.png" type="Texture" id=2]
@@ -24,6 +24,21 @@ albedo_texture = ExtResource( 2 )
 [sub_resource type="ConcavePolygonShape" id=4]
 data = PoolVector3Array( 1, 0.0874, -0.2924, -1, 1, -0.1182, -1, 0.0874, -0.2924, 1, 0.0874, -0.2924, 1, 1, -0.1182, -1, 1, -0.1182, 1, -0.3935, 2.0385, -1, 1, -0.1182, 1, 1, -0.1182, 1, -0.3935, 2.0385, -1, -0.3935, 2.0385, -1, 1, -0.1182, -1, -0.3935, 2.0385, -1, 0.0874, -0.2924, -1, 1, -0.1182, -1, -0.3935, 2.0385, -0.986, -0.4959, -0.5361, -1, 0.0874, -0.2924, -1, -1, -1, 1, -1, 2.9772, 1, -1, -1, -1, -1, -1, -1, -1, 2.9772, 1, -1, 2.9772, 1.014, -0.4959, -0.5361, 1, -0.3935, 2.0385, 1, 0.0874, -0.2924, 1, 0.0874, -0.2924, 1, -0.3935, 2.0385, 1, 1, -0.1182, -0.986, -0.4959, -0.5361, 1, 0.0874, -0.2924, -1, 0.0874, -0.2924, -0.986, -0.4959, -0.5361, 1.014, -0.4959, -0.5361, 1, 0.0874, -0.2924, -1, -1, -1, 1.014, -0.4959, -0.5361, -0.986, -0.4959, -0.5361, -1, -1, -1, 1, -1, -1, 1.014, -0.4959, -0.5361, 1, -1, -1, 1, -0.3935, 2.0385, 1.014, -0.4959, -0.5361, 1, -1, -1, 1, -1, 2.9772, 1, -0.3935, 2.0385, -1, -1, 2.9772, -0.986, -0.4959, -0.5361, -1, -0.3935, 2.0385, -1, -1, 2.9772, -1, -1, -1, -0.986, -0.4959, -0.5361, 1, -1, 2.9772, -1, -0.3935, 2.0385, 1, -0.3935, 2.0385, 1, -1, 2.9772, -1, -1, 2.9772, -1, -0.3935, 2.0385 )
 
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("KinematicBody:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+
 [sub_resource type="Animation" id=2]
 resource_name = "gentlewave"
 length = 10.0
@@ -39,7 +54,6 @@ tracks/0/keys = PoolRealArray( 0, 1, -10, 0, 0, 0, 0, 0, 1, 1, 1, 1, 10, 1, 10, 
 [node name="WaveyWave" type="Spatial"]
 
 [node name="KinematicBody" type="KinematicBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8, 0, 0 )
 
 [node name="wave" type="Spatial" parent="KinematicBody"]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
@@ -54,4 +68,5 @@ shape = SubResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "gentlewave"
+anims/RESET = SubResource( 5 )
 anims/gentlewave = SubResource( 2 )
