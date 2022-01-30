@@ -1,10 +1,10 @@
 extends Spatial
 
 var intensity : float = 0.0
-var STORM_INTENSITY_1 = 0.19
-var STORM_INTENSITY_2 = 0.59
-var STORM_INTENSITY_3 = 0.79
-var STORM_INTENSITY_4 = .99
+var STORM_INTENSITY_1 = 0.2
+var STORM_INTENSITY_2 = 0.4
+var STORM_INTENSITY_3 = 0.8
+var STORM_INTENSITY_4 = 1.0
 var wind_direction = Vector2(0,0)
 var state
 
