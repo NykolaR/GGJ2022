@@ -8,6 +8,7 @@ onready var area : Area = $Area as Area
 onready var boat_sound : AudioStreamPlayer = $AudioStreamPlayer as AudioStreamPlayer
 onready var cast_holder : Spatial = $CastHolder as Spatial
 var casts : Array
+var cooldown : bool = false
 
 export var force_curve : Curve
 
@@ -33,6 +34,10 @@ func _physics_process(delta: float) -> void:
 	var input : float = Input.get_axis("rotate_left", "rotate_right")
 	boat_sound.volume_db = linear2db(abs(input))
 	add_torque(Vector3(0, -input, 0))
+	
+	if Input.is_action_just_pressed("fire_ye_cannon"):
+		cooldown = true
+		$Cooldown.start()
 
 func hit(position : Vector3) -> void:
 	pass
@@ -42,3 +47,7 @@ func _body_entered(body: Node) -> void:
 
 func _body_exited(body: Node) -> void:
 	linear_damp = 1.0
+
+
+func _on_Cooldown_timeout():
+	cooldown = false
