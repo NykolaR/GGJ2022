@@ -10,7 +10,7 @@ onready var area : Area = $Area as Area
 onready var boat_sound : AudioStreamPlayer = $AudioStreamPlayer as AudioStreamPlayer
 onready var cast_holder : Spatial = $CastHolder as Spatial
 var casts : Array
-var cooldown : bool = false
+var cooldown : bool = true
 
 export var force_curve : Curve
 
@@ -41,9 +41,12 @@ func _physics_process(delta: float) -> void:
 		spawn_ball()
 	
 	var flippy : float = global_transform.basis.y.dot(Vector3.UP)
-	if flippy < -0.2:
-		print("dead")
+	if flippy < -0.2 or global_transform.origin.y < -4:
 		set_physics_process(false)
+		boat_sound.volume_db = -80
+		yield(get_tree().create_timer(1.0), "timeout")
+		get_tree().call_group("Main", "end_game")
+		queue_free()
 
 func spawn_ball() -> void:
 	cooldown = true
