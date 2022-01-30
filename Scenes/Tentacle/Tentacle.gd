@@ -4,6 +4,7 @@ enum {RISING, STEERING, ATTACKING, ATTACK_COOLDOWN, DYING, DEAD}
 
 onready var impact_sounds : Spatial = $impact_sounds
 onready var death_sounds : Spatial = $death_sounds
+
 var MAX_IMPACT_SOUNDS = 2
 var MAX_DEATH_SOUNDS = 3
 

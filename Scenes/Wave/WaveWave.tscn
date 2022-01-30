@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Models/Material.material" type="Material" id=1]
 [ext_resource path="res://Models/tentacle/wave-texture.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Wave/WaveWave.gd" type="Script" id=3]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "wave_Cube"
@@ -42,16 +43,16 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=2]
 resource_name = "gentlewave"
 length = 10.0
-loop = true
 tracks/0/type = "transform"
 tracks/0/path = NodePath("KinematicBody")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/keys = PoolRealArray( 0, 1, -10, 0, 0, 0, 0, 0, 1, 1, 1, 1, 10, 1, 10, 0, 0, 0, 0, 0, 1, 1, 1, 1 )
+tracks/0/keys = PoolRealArray( 0, 1, -10, 0, 0, 0, 0, 0, 1, 1, 1, 1, 8, 1, 6, 0, 0, 0, 0, 0, 1, 1, 1, 1, 10, 1, 10, -5, 0, 0, 0, 0, 1, 1, 1, 1 )
 
 [node name="WaveyWave" type="Spatial"]
+script = ExtResource( 3 )
 
 [node name="KinematicBody" type="KinematicBody" parent="."]
 
@@ -70,3 +71,5 @@ shape = SubResource( 4 )
 autoplay = "gentlewave"
 anims/RESET = SubResource( 5 )
 anims/gentlewave = SubResource( 2 )
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

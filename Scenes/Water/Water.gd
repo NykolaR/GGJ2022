@@ -30,6 +30,7 @@ func _process(delta: float) -> void:
 	wind_direction = wind_direction.rotated(delta * rand_range(-intensity, intensity) * 15.0)
 	wind_speed = lintense + (rand_range(-lintense, lintense) * 0.7)
 	set_wave_height(wave_curve.interpolate_baked(intensity))
+	$Spawner.wind_direction = wind_direction
 	
 	if rain.emitting:
 		rain.direction = Vector3(-wind_direction.x, -1, wind_direction.y)

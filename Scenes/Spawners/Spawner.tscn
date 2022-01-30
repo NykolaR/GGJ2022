@@ -4,3 +4,16 @@
 
 [node name="Spawner" type="Spatial"]
 script = ExtResource( 1 )
+
+[node name="wave_timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="kraken_timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="Tween" type="Tween" parent="."]
+
+[connection signal="timeout" from="wave_timer" to="." method="_on_wave_timer_timeout"]
+[connection signal="timeout" from="kraken_timer" to="." method="_on_kraken_timer_timeout"]
