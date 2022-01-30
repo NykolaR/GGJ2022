@@ -1,13 +1,13 @@
 # GGJ 2022
 
-
+![splash](Assets/Images/splash.png)
 
 
 
 ## Controls
 
 * Arrow keys to move
-* 
+* <kbd>space</kbd> to shoot your cannons
 
 ## Screenshots 📷
 
