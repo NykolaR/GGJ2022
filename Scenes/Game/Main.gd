@@ -107,9 +107,9 @@ func _StateFlip_timeout() -> void:
 	match weather_state:
 		CALM:
 			set_weather(STORM)
-			current_wave += 1
 			state_flip.wait_time = clamp(10 + current_wave * 20, 30, 120)
 		STORM:
+			current_wave += 1
 			set_weather(CALM)
 			state_flip.wait_time = clamp(8 + current_wave * 2, 8, 20)
 	
