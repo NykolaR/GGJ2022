@@ -2,6 +2,8 @@ extends Node
 
 enum {MAIN, GAME, OVER}
 var state : int = MAIN
+enum {CALM, STORM}
+var weather_state : int = CALM setget set_weather
 
 onready var water : Spatial = $Water as Spatial
 onready var tween : Tween = $Tween as Tween
@@ -37,6 +39,16 @@ func set_intensity(new : float) -> void:
 		$LightningTimer.start()
 	elif intensity < 0.8 and not $LightningTimer.is_stopped():
 		$LightningTimer.stop()
+
+func set_weather(new : int) -> void:
+	if weather_state == new:
+		return
+	weather_state = new
+	match weather_state:
+		CALM:
+			pass
+		STORM:
+			pass
 
 func _LightningTimer_timeout() -> void:
 	#return

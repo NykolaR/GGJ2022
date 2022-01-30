@@ -39,6 +39,11 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("fire_ye_cannon") and not cooldown:
 		spawn_ball()
+	
+	var flippy : float = global_transform.basis.y.dot(Vector3.UP)
+	if flippy < -0.2:
+		print("dead")
+		set_physics_process(false)
 
 func spawn_ball() -> void:
 	cooldown = true
@@ -60,7 +65,6 @@ func _body_entered(body: Node) -> void:
 
 func _body_exited(body: Node) -> void:
 	linear_damp = 1.0
-
 
 func _on_Cooldown_timeout():
 	cooldown = false
