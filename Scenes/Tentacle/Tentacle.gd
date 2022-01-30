@@ -1,5 +1,7 @@
 extends Spatial
 
+enum {RISING, STEERING, ATTACKING, ATTACK_COOLDOWN, DYING, DEAD}
+
 var player_position
 var speed
 var state
@@ -12,7 +14,6 @@ var angle
 var cooldown_time = 120
 onready var tween = $Tween
 var old_pos
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -30,12 +31,12 @@ func _ready():
 	target = Vector2(target_position_x, target_position_z).normalized() * rand_range(3,5)
 	
 	$AnimationPlayer.play("rise")
-	state = "rising"
+	state = RISING
 
 func _process(delta):
-	if state == "rising":
+	if state == RISING:
 		pass
-	elif state == "steering":
+	elif state == STEERING:
 		transform.origin.x += velocity.x
 		transform.origin.z += velocity.y
 		velocity = arrive(velocity, 
@@ -43,23 +44,22 @@ func _process(delta):
 				target)
 		var pos2 = Vector2 (global_transform.origin.x, global_transform.origin.z)
 		if  pos2.distance_squared_to(target) < 1 :
-			state = "attacking"
-	elif state == "attacking":
-		print ("attack")
+			state = ATTACKING
+	elif state == ATTACKING:
 		var pos = $"IK Target".transform.origin
 		tween.interpolate_property($"IK Target", "translation", null, to_local(Vector3(0,0,0)), 0.5, Tween.TRANS_BACK, Tween.EASE_IN_OUT)
 		$Timer.start()
 		tween.interpolate_property($"IK Target", "translation", to_local(Vector3(0,0,0)), pos, 2, Tween.TRANS_CUBIC, Tween.EASE_IN, 0.5)
 		tween.start()
-		state = "attack_cooldown"
-	elif state == "attack_cooldown":
+		state = ATTACK_COOLDOWN
+	elif state == ATTACK_COOLDOWN:
 		pass
-	elif state == "dying":
+	elif state == DYING:
 		tween.interpolate_property($"IK Target", "translation", null, Vector3($"IK Target".transform.origin.x+7, $"IK Target".transform.origin.y-15, $"IK Target".transform.origin.z+7), 2, Tween.TRANS_BACK, Tween.EASE_IN_OUT)
 		tween.interpolate_property(self, "translation", null, Vector3(transform.origin.x, transform.origin.y-2, transform.origin.z), 1, Tween.TRANS_BACK, Tween.EASE_IN_OUT, 2)
 		tween.start()
-		state = "dead"
-	elif state == "dead":
+		state = DEAD
+	elif state == DEAD:
 		pass
 		
 
@@ -74,7 +74,7 @@ func _on_AnimationPlayer_animation_finished(rise):
 
 	velocity = angle2.normalized()*MAX_SPEED
 	$AnimationPlayer.play("wiggling")
-	state = "steering"
+	state = STEERING
 	
 	
 func arrive ( my_velocity: Vector2,
@@ -88,11 +88,10 @@ func arrive ( my_velocity: Vector2,
 	return my_velocity *.99 + steering * .01
 
 func _on_Tween_tween_all_completed():
-	if state == "attack_cooldown":
-		state = "attacking"
-	if state == "dead":
+	if state == ATTACK_COOLDOWN:
+		state = ATTACKING
+	if state == DEAD:
 		queue_free()
 
 func _on_Timer_timeout():
 	get_tree().call_group("player", "hit", global_transform.origin)
-	print("attack finished")
