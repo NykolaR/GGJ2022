@@ -13,6 +13,10 @@ export(float, 0, 1) var intensity : float = 0.0 setget set_intensity
 func _ready() -> void:
 	set_intensity(intensity)
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("fullscreen"):
+		OS.window_fullscreen = not OS.window_fullscreen
+
 func set_intensity(new : float) -> void:
 	intensity = clamp(new, 0, 1)
 	
