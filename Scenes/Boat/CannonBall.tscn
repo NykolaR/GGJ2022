@@ -25,6 +25,8 @@ rings = 12
 radius = 0.151166
 
 [node name="CannonBall" type="RigidBody"]
+collision_layer = 0
+collision_mask = 0
 can_sleep = false
 axis_lock_angular_x = true
 axis_lock_angular_y = true
@@ -42,42 +44,42 @@ shape = SubResource( 2 )
 
 [node name="S1" type="AudioStreamPlayer3D" parent="Shot"]
 stream = ExtResource( 2 )
-unit_size = 20.0
+unit_size = 50.0
 bus = "SFX"
 
 [node name="S2" type="AudioStreamPlayer3D" parent="Shot"]
 stream = ExtResource( 4 )
-unit_size = 20.0
+unit_size = 50.0
 bus = "SFX"
 
 [node name="S3" type="AudioStreamPlayer3D" parent="Shot"]
 stream = ExtResource( 3 )
-unit_size = 20.0
+unit_size = 50.0
 bus = "SFX"
 
 [node name="S4" type="AudioStreamPlayer3D" parent="Shot"]
 stream = ExtResource( 9 )
-unit_size = 20.0
+unit_size = 50.0
 bus = "SFX"
 
 [node name="S5" type="AudioStreamPlayer3D" parent="Shot"]
 stream = ExtResource( 7 )
-unit_size = 20.0
+unit_size = 50.0
 bus = "SFX"
 
 [node name="S6" type="AudioStreamPlayer3D" parent="Shot"]
 stream = ExtResource( 8 )
-unit_size = 20.0
+unit_size = 50.0
 bus = "SFX"
 
 [node name="S7" type="AudioStreamPlayer3D" parent="Shot"]
 stream = ExtResource( 6 )
-unit_size = 20.0
+unit_size = 50.0
 bus = "SFX"
 
 [node name="S8" type="AudioStreamPlayer3D" parent="Shot"]
 stream = ExtResource( 5 )
-unit_size = 20.0
+unit_size = 50.0
 bus = "SFX"
 
 [node name="WaterHit" type="Spatial" parent="."]

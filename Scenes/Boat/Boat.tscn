@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scenes/Boat/Boat.gd" type="Script" id=1]
 [ext_resource path="res://Sounds/boat_movement.ogg" type="AudioStream" id=2]
@@ -28,6 +28,16 @@ surfaces/0 = {
 "skeleton_aabb": [  ],
 "vertex_count": 135
 }
+
+[sub_resource type="SpatialMaterial" id=12]
+flags_unshaded = true
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id=13]
+size = Vector2( 0.3, 0.3 )
 
 [sub_resource type="ArrayMesh" id=2]
 resource_name = "shiptextured_Cube010"
@@ -96,10 +106,27 @@ shape = SubResource( 5 )
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
 
 [node name="cannon001" type="MeshInstance" parent="shiptextured"]
-transform = Transform( 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, -2.98023e-08, 1, -0.367927, 0.757686, -0.418834 )
+transform = Transform( 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, -2.98023e-08, -2.98023e-08, 1, -0.65, 0.83, -0.42 )
 material_override = SubResource( 10 )
 mesh = SubResource( 1 )
 material/0 = null
+
+[node name="CannonSpawn" type="Spatial" parent="shiptextured/cannon001"]
+transform = Transform( 1, 0, 1.19209e-07, -7.45058e-09, 1, 0, 0, 0, 1, -1.15, 0, 0 )
+
+[node name="CPUParticles" type="CPUParticles" parent="shiptextured/cannon001"]
+transform = Transform( 1, 0, 1.19209e-07, -7.45058e-09, 1, 0, 0, 0, 1, -0.983431, -5.96046e-08, -2.98023e-08 )
+material_override = SubResource( 12 )
+emitting = false
+amount = 16
+lifetime = 0.17
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource( 13 )
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 6.0
+damping = 30.0
 
 [node name="ropes" type="MeshInstance" parent="shiptextured"]
 material_override = SubResource( 10 )
@@ -172,5 +199,10 @@ volume_db = -80.0
 autoplay = true
 bus = "SFX"
 
+[node name="Cooldown" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
 [connection signal="body_entered" from="Area" to="." method="_body_entered"]
 [connection signal="body_exited" from="Area" to="." method="_body_exited"]
+[connection signal="timeout" from="Cooldown" to="." method="_on_Cooldown_timeout"]

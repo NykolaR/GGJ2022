@@ -2,8 +2,10 @@ extends RigidBody
 
 # ray length = 2
 
+const CANNON : PackedScene = preload("res://Scenes/Boat/CannonBall.tscn")
 const FORCE_SCALE : float = 4.0# * 10.0
 
+onready var cannon_spawn : Spatial = $shiptextured/cannon001/CannonSpawn as Spatial
 onready var area : Area = $Area as Area
 onready var boat_sound : AudioStreamPlayer = $AudioStreamPlayer as AudioStreamPlayer
 onready var cast_holder : Spatial = $CastHolder as Spatial
@@ -35,9 +37,20 @@ func _physics_process(delta: float) -> void:
 	boat_sound.volume_db = linear2db(abs(input))
 	add_torque(Vector3(0, -input, 0))
 	
-	if Input.is_action_just_pressed("fire_ye_cannon"):
-		cooldown = true
-		$Cooldown.start()
+	if Input.is_action_just_pressed("fire_ye_cannon") and not cooldown:
+		spawn_ball()
+
+func spawn_ball() -> void:
+	cooldown = true
+	$shiptextured/cannon001/CPUParticles.emitting = true
+	$Cooldown.start()
+	var new_ball : Spatial = CANNON.instance()
+	cannon_spawn.add_child(new_ball)
+	new_ball.set_as_toplevel(true)
+	new_ball.global_transform = cannon_spawn.global_transform
+	new_ball.shoot()
+	
+	add_torque(transform.basis.z * -10)
 
 func hit(position : Vector3) -> void:
 	pass
