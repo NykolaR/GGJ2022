@@ -5,6 +5,7 @@ extends RigidBody
 const CANNON : PackedScene = preload("res://Scenes/Boat/CannonBall.tscn")
 const FORCE_SCALE : float = 4.0# * 10.0
 
+onready var hit_sounds : Spatial = $Hit as Spatial
 onready var cannon_spawn : Spatial = $shiptextured/cannon001/CannonSpawn as Spatial
 onready var area : Area = $Area as Area
 onready var boat_sound : AudioStreamPlayer = $AudioStreamPlayer as AudioStreamPlayer
@@ -63,6 +64,7 @@ func spawn_ball() -> void:
 
 func hit(position : Vector3) -> void:
 	add_torque(position.normalized() * rand_range(15, 25))
+	hit_sounds.get_child(randi()%3).play()
 
 func _body_entered(body: Node) -> void:
 	linear_damp = 2.0

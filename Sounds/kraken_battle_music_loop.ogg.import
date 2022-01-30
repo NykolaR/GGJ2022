@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/kraken_battle_music_loop.ogg-56ad03339f574580f6677950198a5aea.oggstr"
+
+[deps]
+
+source_file="res://Sounds/kraken_battle_music_loop.ogg"
+dest_files=[ "res://.import/kraken_battle_music_loop.ogg-56ad03339f574580f6677950198a5aea.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scenes/Game/Main.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Water/Water.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Game/MainMenu.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Game/GameOver.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Sounds/seagull_loop.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Scenes/Debug/BirdWatching.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0.219608, 0.513726, 0.890196, 1, 0.827451, 0.894118, 0.937255, 1 )
@@ -118,6 +120,20 @@ transform = Transform( 0.707107, -0.353553, 0.612373, 0, 0.866026, 0.499999, -0.
 visible = false
 mesh = SubResource( 6 )
 material/0 = SubResource( 8 )
+
+[node name="Birds" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.013, 0 )
+
+[node name="Bird" parent="Birds" instance=ExtResource( 6 )]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 4.87713, 0 )
+
+[node name="Bird2" parent="Birds" instance=ExtResource( 6 )]
+transform = Transform( 0.190047, 0, 0.0623078, 0, 0.2, 0, -0.0623078, 0, 0.190047, 0, 4.87713, 0 )
+
+[node name="Seaguls" type="AudioStreamPlayer3D" parent="Birds"]
+stream = ExtResource( 5 )
+unit_size = 50.0
+autoplay = true
 
 [connection signal="timeout" from="StateFlip" to="." method="_StateFlip_timeout"]
 [connection signal="timeout" from="Timer" to="MeshInstance" method="hide"]

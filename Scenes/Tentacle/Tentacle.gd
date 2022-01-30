@@ -102,6 +102,12 @@ func hit():
 		impact_sounds.get_child(randi()%MAX_IMPACT_SOUNDS).play()
 		death_sounds.get_child(randi()%MAX_DEATH_SOUNDS).play()
 		state = DYING
+		$Area/CollisionShape.disabled = true
+
+func silent_hit():
+	if state != DEAD:
+		state = DYING
+		$Area/CollisionShape.disabled = true
 
 func _on_Timer_timeout():
 	get_tree().call_group("player", "hit", global_transform.origin)
