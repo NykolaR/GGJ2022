@@ -11,7 +11,7 @@ config_version=4
 [application]
 
 config/name="Weather_the_Storm"
-run/main_scene="res://Scenes/Game/Main.tscn"
+run/main_scene="res://Scenes/Boat/Boat.tscn"
 config/icon="res://icon.png"
 
 [autoload]
