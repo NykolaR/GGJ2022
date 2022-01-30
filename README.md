@@ -11,7 +11,11 @@
 
 ## Screenshots 📷
 
+![screen1](Screenshots/screen1.png)
 
+![screen2](Screenshots/screen2.png)
+
+![screen3](Screenshots/screen3.png)
 
 
 
