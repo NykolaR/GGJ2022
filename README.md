@@ -1,4 +1,4 @@
-# GGJ 2022
+# Weather the Storm
 
 ![splash](Assets/Images/splash.png)
 
