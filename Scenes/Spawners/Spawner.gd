@@ -80,7 +80,7 @@ func _on_wave_timer_timeout():
 	elif state == STORM_4:
 		wave_timer.wait_time = 1
 	elif state == STORM_5:
-		wave_timer.wait_time = range_around(3)
+		wave_timer.wait_time = range_around(5)
 		spawn_wave()
 	wave_timer.start()
 
@@ -95,10 +95,10 @@ func _on_kraken_timer_timeout():
 	elif state == STORM_3:
 		kraken_timer.wait_time = 1
 	elif state == STORM_4:
-		kraken_timer.wait_time = range_around(3)
+		kraken_timer.wait_time = range_around(5)
 		spawn_kraken()
 	elif state == STORM_5:
-		kraken_timer.wait_time = range_around(2)
+		kraken_timer.wait_time = range_around(3)
 		spawn_kraken()
 	kraken_timer.start()
 	

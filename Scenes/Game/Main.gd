@@ -15,7 +15,11 @@ onready var water : Spatial = $Water as Spatial
 onready var tween : Tween = $Tween as Tween
 onready var animation : AnimationPlayer = $AnimationPlayer as AnimationPlayer
 onready var state_flip : Timer = $StateFlip as Timer
+onready var birds : Spatial = $Birds as Spatial
+onready var birds_sounds : AudioStreamPlayer3D = $Birds/Seaguls
 var intensity : float = 0.0 setget set_intensity
+
+var survival_time : float = 0
 
 # waves last from 30s to 120s
 var current_wave : int = 0
@@ -42,6 +46,12 @@ func _input(event: InputEvent) -> void:
 		if state == MAIN:
 			use_continue()
 
+func _process(delta: float) -> void:
+	if state == GAME:
+		survival_time += delta
+	
+	birds.transform.origin.x = range_lerp(intensity, 0, 1, 0, -30)
+
 func use_continue() -> void:
 	var nboat : Spatial = BOAT.instance()
 	boat_spawn.add_child(nboat)
@@ -51,6 +61,7 @@ func use_continue() -> void:
 	tween.start()
 	state_flip.wait_time = 8 # (?)
 	state_flip.start()
+	survival_time = 0
 
 func start_game() -> void:
 	var nboat : Spatial = BOAT.instance()
@@ -61,13 +72,15 @@ func start_game() -> void:
 	tween.start()
 	state_flip.wait_time = 8 # (?)
 	state_flip.start()
+	survival_time = 0
 
 func end_game() -> void:
+	$GameOver.set_text(int(survival_time))
 	game_over_wave = current_wave
 	state_flip.stop()
 	set_weather(CALM)
 	set_state(OVER)
-	get_tree().call_group("Kraken", "hit")
+	get_tree().call_group("Kraken", "silent_hit")
 
 func set_state(new : int) -> void:
 	if state == new:
@@ -104,14 +117,18 @@ func set_weather(new : int) -> void:
 	weather_state = new
 	match weather_state:
 		CALM:
-			get_tree().call_group("Kraken", "hit")
+			get_tree().call_group("Kraken", "silent_hit")
 			var nintensity : float = rand_range(0.0, 0.1)
 			tween.interpolate_property(self, "intensity", null, nintensity, 3.0, Tween.TRANS_QUAD, Tween.EASE_IN)
+			tween.interpolate_property(birds, "translation:y", null, 0, 5.0, Tween.TRANS_QUART, Tween.EASE_OUT)
+			tween.interpolate_property(birds_sounds, "unit_db", null, 0, Tween.TRANS_EXPO, Tween.EASE_OUT)
 			tween.start()
 		STORM:
 			var nintensity : float = clamp(0.2 + current_wave * 0.2, 0, 1)
 			var time : float = 10.0
 			tween.interpolate_property(self, "intensity", null, nintensity, time, Tween.TRANS_CUBIC, Tween.EASE_IN)
+			tween.interpolate_property(birds, "translation:y", null, 14, 5.0, Tween.TRANS_CUBIC, Tween.EASE_IN)
+			tween.interpolate_property(birds_sounds, "unit_db", null, -80, Tween.TRANS_EXPO, Tween.EASE_IN)
 			tween.start()
 
 func _LightningTimer_timeout() -> void:
@@ -125,7 +142,7 @@ func _StateFlip_timeout() -> void:
 	match weather_state:
 		CALM:
 			set_weather(STORM)
-			state_flip.wait_time = clamp(10 + current_wave * 20, 30, 120)
+			state_flip.wait_time = clamp(10 + current_wave * 10, 20, 120)
 		STORM:
 			current_wave += 1
 			set_weather(CALM)
