@@ -61,7 +61,7 @@ func spawn_ball() -> void:
 	add_torque(transform.basis.z * -20)
 
 func hit(position : Vector3) -> void:
-	add_torque(position.normalized() * 30)
+	add_torque(position.normalized() * rand_range(15, 25))
 
 func _body_entered(body: Node) -> void:
 	linear_damp = 2.0

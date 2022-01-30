@@ -58,9 +58,8 @@ func spawn_wave():
 	tween.start()
 	new_wave.set_as_toplevel(true)
 	new_wave.rotation = Vector3(0, -wind_direction.angle(),0)
-	new_wave.scale.x = rand_range(1.0, 5.0)
+	new_wave.scale.x = rand_range(2.0, 5.0)
 	new_wave.scale.z = rand_range(3.0, 6.0)
-	# we still need to queue free it
 	
 func spawn_kraken():
 	var new_kraken = KRAKEN.instance()
@@ -77,7 +76,7 @@ func _on_wave_timer_timeout():
 	elif state == STORM_2:
 		wave_timer.wait_time = 1
 	elif state == STORM_3:
-		wave_timer.wait_time = range_around(5)
+		wave_timer.wait_time = range_around(3)
 		spawn_wave()
 	elif state == STORM_4:
 		wave_timer.wait_time = 1
@@ -97,7 +96,7 @@ func _on_kraken_timer_timeout():
 	elif state == STORM_3:
 		kraken_timer.wait_time = 1
 	elif state == STORM_4:
-		kraken_timer.wait_time = range_around(5)
+		kraken_timer.wait_time = range_around(3)
 		spawn_kraken()
 	elif state == STORM_5:
 		kraken_timer.wait_time = range_around(2)

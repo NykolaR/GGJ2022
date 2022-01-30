@@ -23,6 +23,7 @@ var old_pos
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
 	randomize()
 	player_position = Vector3(0,0,0)
 	$Armature/Skeleton/SkeletonIK.start()

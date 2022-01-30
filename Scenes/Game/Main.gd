@@ -7,6 +7,7 @@ enum {MAIN, GAME, OVER}
 var state : int = -1 setget set_state
 enum {CALM, STORM}
 var weather_state : int = CALM setget set_weather
+var game_over_wave = 0
 
 onready var main_menu : Control = $MainMenu as Control
 onready var game_over : Control = $GameOver as Control
@@ -36,6 +37,21 @@ func _input(event: InputEvent) -> void:
 			OVER:
 				if game_over.modulate.a >= 0.9 and not tween.is_active():
 					set_state(MAIN)
+	
+	if Input.is_action_just_pressed("cheat_code_reset"):
+		if state == MAIN:
+			use_continue()
+
+func use_continue() -> void:
+	var nboat : Spatial = BOAT.instance()
+	boat_spawn.add_child(nboat)
+	current_wave = game_over_wave
+	weather_state = CALM
+	tween.interpolate_property(main_menu, "modulate:a", null, 0.0, 1.5, Tween.TRANS_CUBIC, Tween.EASE_OUT)
+	tween.start()
+	state_flip.wait_time = 8 # (?)
+	state_flip.start()
+
 
 func start_game() -> void:
 	var nboat : Spatial = BOAT.instance()
@@ -48,9 +64,11 @@ func start_game() -> void:
 	state_flip.start()
 
 func end_game() -> void:
+	game_over_wave = current_wave
 	state_flip.stop()
 	set_weather(CALM)
 	set_state(OVER)
+	get_tree().call_group("Kraken", "hit")
 
 func set_state(new : int) -> void:
 	if state == new:

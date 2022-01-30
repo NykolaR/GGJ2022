@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/kraken_battle_music.wav-efa0034cf7d0ed0393e7f962bf99494c.sample"
+
+[deps]
+
+source_file="res://Sounds/kraken_battle_music.wav"
+dest_files=[ "res://.import/kraken_battle_music.wav-efa0034cf7d0ed0393e7f962bf99494c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
