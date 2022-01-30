@@ -12,7 +12,7 @@ var intensity : float = 0.0 setget set_intensity
 var current_wave : int = 0
 
 func _ready() -> void:
-	tween.interpolate_property(self, "intensity", null, 0.7, 10.0, Tween.TRANS_CUBIC, Tween.EASE_IN)
+	tween.interpolate_property(self, "intensity", null, 0.9, 10.0, Tween.TRANS_CUBIC, Tween.EASE_IN)
 	tween.start()
 	animation.play("Intensity")
 	animation.stop(false)
@@ -32,3 +32,16 @@ func set_intensity(new : float) -> void:
 	AmbientAudio.intensity = intensity
 	water.intensity = intensity
 	animation.seek(new, true)
+	
+	if intensity > 0.8 and $LightningTimer.is_stopped():
+		$LightningTimer.start()
+	elif intensity < 0.8 and not $LightningTimer.is_stopped():
+		$LightningTimer.stop()
+
+func _LightningTimer_timeout() -> void:
+	return
+	if randi()%10 == 0:
+		$MeshInstance.show()
+		$Timer.start()
+	
+	$LightningTimer.wait_time = rand_range(0.5, 2.5)

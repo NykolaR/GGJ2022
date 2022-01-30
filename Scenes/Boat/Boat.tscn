@@ -100,7 +100,7 @@ input_ray_pickable = false
 can_sleep = false
 axis_lock_linear_x = true
 axis_lock_linear_z = true
-angular_damp = 2.0
+angular_damp = 2.5
 script = ExtResource( 1 )
 force_curve = SubResource( 4 )
 
@@ -108,7 +108,7 @@ force_curve = SubResource( 4 )
 shape = SubResource( 5 )
 
 [node name="ship" type="Spatial" parent="."]
-transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.293856, 0 )
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
 
 [node name="cannon001" type="MeshInstance" parent="ship"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.419691, 1.1645, -0.218834 )

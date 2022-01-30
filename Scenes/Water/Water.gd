@@ -16,6 +16,7 @@ onready var heightmap_viewport : Viewport = $Viewport
 onready var viewport_shader = $Viewport/Sprite.material as ShaderMaterial
 onready var water_shader = $MeshInstance.get_surface_material(0) as ShaderMaterial
 onready var heightmap : HeightMapShape = $StaticBody/CollisionShape.shape as HeightMapShape
+onready var rain : CPUParticles = $CPUParticles as CPUParticles
 
 func _ready() -> void:
 	set_wave_height(wave_height)
@@ -29,6 +30,9 @@ func _process(delta: float) -> void:
 	wind_direction = wind_direction.rotated(delta * rand_range(-intensity, intensity) * 15.0)
 	wind_speed = lintense + (rand_range(-lintense, lintense) * 0.7)
 	set_wave_height(wave_curve.interpolate_baked(intensity))
+	
+	if rain.emitting:
+		rain.direction = Vector3(-wind_direction.x, -1, wind_direction.y)
 
 func update_heightmap() -> void:
 	var n_float_array : PoolRealArray = PoolRealArray()
@@ -56,4 +60,4 @@ func set_wave_height(new : float) -> void:
 
 func set_intensity(new : float) -> void:
 	intensity = clamp(new, 0, 1)
-	
+	rain.emitting = intensity > 0.6

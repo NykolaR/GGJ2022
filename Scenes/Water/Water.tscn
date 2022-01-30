@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Scenes/Water/Water.gd" type="Script" id=1]
 
@@ -109,6 +109,18 @@ noise = SubResource( 4 )
 [sub_resource type="ViewportTexture" id=6]
 viewport_path = NodePath("Viewport")
 
+[sub_resource type="SpatialMaterial" id=20]
+flags_unshaded = true
+params_specular_mode = 1
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_color = Color( 0.247059, 0.247059, 0.247059, 1 )
+
+[sub_resource type="QuadMesh" id=21]
+size = Vector2( 0.2, 0.2 )
+
 [node name="Water" type="Spatial"]
 script = ExtResource( 1 )
 wave_curve = SubResource( 19 )
@@ -134,3 +146,18 @@ centered = false
 [node name="Sprite" type="Sprite" parent="."]
 visible = false
 texture = SubResource( 6 )
+
+[node name="CPUParticles" type="CPUParticles" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32, 0 )
+material_override = SubResource( 20 )
+cast_shadow = 0
+emitting = false
+amount = 512
+lifetime = 0.22
+speed_scale = 0.1
+mesh = SubResource( 21 )
+emission_shape = 2
+emission_box_extents = Vector3( 32, 4, 32 )
+direction = Vector3( 0, -1, 0 )
+spread = 0.0
+initial_velocity = 150.0
