@@ -2,12 +2,17 @@ extends Spatial
 
 enum {RISING, STEERING, ATTACKING, ATTACK_COOLDOWN, DYING, DEAD}
 
+onready var impact_sounds : Spatial = $impact_sounds
+onready var death_sounds : Spatial = $death_sounds
+var MAX_IMPACT_SOUNDS = 2
+var MAX_DEATH_SOUNDS = 3
+
 var player_position
 var speed
 var state
 var MAX_SPEED = .4
 var SLOW_RADIUS = 30
-var MASS = 1
+var MASS = 2.5
 var velocity: Vector2
 var target
 var angle
@@ -34,6 +39,7 @@ func _ready():
 	state = RISING
 
 func _process(delta):
+	print (state)
 	if state == RISING:
 		pass
 	elif state == STEERING:
@@ -55,28 +61,25 @@ func _process(delta):
 	elif state == ATTACK_COOLDOWN:
 		pass
 	elif state == DYING:
+		$AnimationPlayer.stop()
 		tween.interpolate_property($"IK Target", "translation", null, Vector3($"IK Target".transform.origin.x+7, $"IK Target".transform.origin.y-15, $"IK Target".transform.origin.z+7), 2, Tween.TRANS_BACK, Tween.EASE_IN_OUT)
 		tween.interpolate_property(self, "translation", null, Vector3(transform.origin.x, transform.origin.y-2, transform.origin.z), 1, Tween.TRANS_BACK, Tween.EASE_IN_OUT, 2)
 		tween.start()
 		state = DEAD
 	elif state == DEAD:
 		pass
-		
 
 func spawn (player):
 	pass
-	
-func _on_AnimationPlayer_animation_finished(rise):
 
+func _on_AnimationPlayer_animation_finished(rise):
 	var angle2 = angle.tangent()
 	if randi() % 2 == 0:
 		angle2 = angle.rotated(PI)
-
 	velocity = angle2.normalized()*MAX_SPEED
 	$AnimationPlayer.play("wiggling")
 	state = STEERING
-	
-	
+
 func arrive ( my_velocity: Vector2,
 		global_position: Vector2,
 		target_position: Vector2) -> Vector2: 
@@ -92,6 +95,12 @@ func _on_Tween_tween_all_completed():
 		state = ATTACKING
 	if state == DEAD:
 		queue_free()
+
+func hit():
+	if state != DEAD:
+		impact_sounds.get_child(randi()%MAX_IMPACT_SOUNDS).play()
+		death_sounds.get_child(randi()%MAX_DEATH_SOUNDS).play()
+		state = DYING
 
 func _on_Timer_timeout():
 	get_tree().call_group("player", "hit", global_transform.origin)
