@@ -1,8 +1,8 @@
 extends Spatial
 
 var intensity : float = 0.0
-var STORM_INTENSITY_1 = 0.2
-var STORM_INTENSITY_2 = 0.4
+var STORM_INTENSITY_1 = 0.4
+var STORM_INTENSITY_2 = 0.6
 var STORM_INTENSITY_3 = 0.8
 var STORM_INTENSITY_4 = 1.0
 var wind_direction = Vector2(0,0)
@@ -53,12 +53,15 @@ func spawn_wave():
 	tween.interpolate_property(new_wave, "translation:y", null, 0, 2, Tween.TRANS_CUBIC, Tween.EASE_IN)	
 	tween.start()
 	new_wave.set_as_toplevel(true)
-	new_wave.rotation = Vector3(0, wind_direction.angle(),0)
+	new_wave.rotation = Vector3(0, -wind_direction.angle(),0)
+	new_wave.scale.x = rand_range(1.0, 5.0)
+	new_wave.scale.y = rand_range(3.0, 6.0)
 	# we still need to queue free it
 	
 func spawn_kraken():
 	var new_kraken = KRAKEN.instance()
 	add_child(new_kraken)
+	new_kraken.scale = Vector3(rand_range(0.4,0.6), rand_range(0.4,0.5), rand_range(0.4,0.5))
 
 func _on_wave_timer_timeout():
 	print (intensity)
@@ -68,7 +71,7 @@ func _on_wave_timer_timeout():
 		wave_timer.wait_time = 10
 		spawn_wave()
 	elif state == STORM_2:
-		wave_timer.wait_time = 5
+		wave_timer.wait_time = 1
 	elif state == STORM_3:
 		wave_timer.wait_time = 5
 		spawn_wave()

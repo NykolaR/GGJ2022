@@ -20,7 +20,6 @@ var intensity : float = 0.0 setget set_intensity
 var current_wave : int = 0
 
 func _ready() -> void:
-	Engine.time_scale=2
 	animation.play("Intensity")
 	animation.stop(false)
 	set_state(MAIN)

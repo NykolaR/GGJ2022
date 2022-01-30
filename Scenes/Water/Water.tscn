@@ -122,7 +122,7 @@ albedo_color = Color( 0.247059, 0.247059, 0.247059, 1 )
 [sub_resource type="QuadMesh" id=21]
 size = Vector2( 0.2, 0.2 )
 
-[node name="Water" type="Spatial" groups=["Water"]]
+[node name="Water" type="Spatial"]
 script = ExtResource( 1 )
 wave_curve = SubResource( 19 )
 
@@ -146,8 +146,6 @@ centered = false
 
 [node name="Sprite" type="Sprite" parent="."]
 visible = false
-modulate = Color( 1, 1, 1, 0.301961 )
-position = Vector2( 269, 276 )
 texture = SubResource( 6 )
 
 [node name="CPUParticles" type="CPUParticles" parent="."]
